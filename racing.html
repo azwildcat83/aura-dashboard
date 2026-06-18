@@ -1,22 +1,49 @@
 <!doctype html><html><head><meta charset="utf-8"><title>Aura Racing Desk</title>
 <meta http-equiv="refresh" content="60">
 <style>
- body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0e1117;color:#e6e6e6;margin:0;padding:24px}
- h1{font-weight:600;margin:0 0 4px} h2{font-size:15px;border-bottom:1px solid #21262d;padding-bottom:6px;margin:24px 0 10px}
- a{color:#7d5bed} .sub{color:#8b949e;font-size:13px} .pos{color:#3fb950} .neg{color:#f85149} .mut{color:#8b949e}
- .bank{display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px 18px;margin:10px 0}
- .bank .big{font-size:24px;font-weight:700} .bank .m{font-size:13px;color:#c9d1d9}
- table{border-collapse:collapse;width:100%;max-width:1000px;font-size:13px} th,td{border-bottom:1px solid #21262d;padding:7px 10px;text-align:left}
- .brief{background:#11161d;border:1px solid #30363d;border-left:3px solid #7d5bed;border-radius:10px;padding:14px 18px;white-space:pre-wrap;line-height:1.55;max-width:1000px;margin:8px 0}
- .tag{font-size:11px;background:#21262d;color:#c9d1d9;padding:2px 8px;border-radius:10px}
+ :root{--bg:#0b0e14;--card:#141b26;--line:#222c3a;--ink:#e9edf3;--mut:#8b97a8;--purple:#8b6cf0;--gold:#f0b65b}
+ *{box-sizing:border-box} body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:
+   radial-gradient(1200px 500px at 80% -10%,#1a2235 0,var(--bg) 60%);color:var(--ink);margin:0;padding:26px;max-width:1080px}
+ h1{font-weight:700;margin:0 0 2px;letter-spacing:.2px} h2{font-size:14px;text-transform:uppercase;letter-spacing:.6px;
+   color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:7px;margin:26px 0 12px}
+ a{color:var(--purple);text-decoration:none} a:hover{text-decoration:underline}
+ .sub{color:var(--mut);font-size:13px} .pos{color:#46d27e} .neg{color:#ff6b6b} .mut{color:var(--mut)}
+ .bank{display:flex;gap:26px;flex-wrap:wrap;align-items:center;background:linear-gradient(180deg,#18212f,#121925);
+   border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:12px 0;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+ .bank .big{font-size:30px;font-weight:800;letter-spacing:.3px} .bank .m{font-size:13px;color:#c4cdda;line-height:1.7}
+ .bank .lab{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);display:block}
+ table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;background:var(--card);
+   border:1px solid var(--line);border-radius:12px;overflow:hidden}
+ th{background:#1b2433;color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+ th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)} tr:last-child td{border-bottom:none}
+ tbody tr:hover{background:#172030}
+ .brief{background:#11161f;border:1px solid var(--line);border-left:3px solid var(--purple);border-radius:12px;
+   padding:15px 19px;white-space:pre-wrap;line-height:1.6;margin:8px 0}
+ .tag{font-size:11px;background:#222c3a;color:#c4cdda;padding:2px 9px;border-radius:20px;white-space:nowrap}
+ .pill{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:.3px}
+ .st-upcoming{background:#1d2738;color:#9fb2cc} .st-next{background:#3a2f06;color:var(--gold)}
+ .st-off{background:#2a1f3d;color:#c9a9ff} .st-await{background:#0e2f3a;color:#5cc8e0;animation:pulse 1.6s infinite}
+ .st-settled{background:#10301f;color:#46d27e} .st-scheduled{background:#1d2738;color:#9fb2cc}
+ @keyframes pulse{50%{opacity:.55}}
+ .trk{background:#1a2433;color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.3px}
+ .ex{background:#241a3a;color:#c9a9ff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;margin-left:5px}
+ .feed{display:flex;flex-wrap:wrap;gap:8px} .chip{background:var(--card);border:1px solid var(--line);border-radius:10px;
+   padding:8px 12px;font-size:12px;min-width:150px} .chip b{display:block;font-size:13px}
+ code{background:#1b2433;padding:1px 6px;border-radius:5px;font-size:12px}
 </style></head><body>
 <h1>🐎 Aura Racing Desk <span class="sub">— paper bankroll · <a href="/">← trading desk</a></span></h1>
 <div class="bank">
-  <span class="big pos">$1000.00</span>
-  <span class="m">start $1000 · P&L <b class="pos">$+0.00</b> · ROI <b class="pos">+0.0%</b></span>
-  <span class="m">record 0/0 (0.0%) · open 19 ($495.98 at risk) · available $504.02</span>
+  <span><span class="lab">Bankroll</span><span class="big pos">$1000.00</span></span>
+  <span class="m"><span class="lab">P&amp;L / ROI</span><b class="pos">$+0.00</b> · <b class="pos">+0.0%</b><br><span class="sub">start $1000</span></span>
+  <span class="m"><span class="lab">Record</span>0/0 <span class="sub">(0.0% win)</span></span>
+  <span class="m"><span class="lab">Open exposure</span>19 bet(s) · $495.98 at risk<br><span class="sub">available $504.02</span></span>
 </div>
-<h2>📋 Racing Briefing <span class="sub">2026-06-18T12:50</span></h2><div class="brief">🏦 **Bankroll**  
+
+
+
+
+
+<h2>📋 Racing briefing <span class="sub">2026-06-18T12:50</span></h2><div class="brief">🏦 **Bankroll**  
 - Current: $1000.00  
 - Starting: $1000.00  
 - ROI: 0.0%  
@@ -55,16 +82,56 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 4. **Overlay Strategy Needs Adjustment**: Bets in all overlay categories (small, moderate, big) have resulted in losses, with no wins recorded. Particularly concerning is the 0/5 record in moderate overlays, which are typically targeted for value. This suggests the overlay calculation might need refinement or a shift in focus to exploit different market inefficiencies. 
 
 **Adjustment for Tomorrow**: Focus on refining the data analysis methods used in the full figures mode and reconsider the confidence assessment process. Additionally, explore and test alternative bet types to determine if diversification can improve results.</div>
-<h2>🎟️ Open bets</h2><table><tr><th>#</th><th>Track</th><th>Race</th><th>Horse</th><th>Type</th><th>Stake</th><th>Odds</th><th>Note</th></tr>
-<tr><td>1</td><td class="mut">Churchill Downs</td><td>R1</td><td>Randie&#39;s Rascal (GB)</td><td>win</td><td>$38.13</td><td>5.5</td><td class="mut">value +0.1248</td></tr><tr><td>2</td><td class="mut">Churchill Downs</td><td>R2</td><td>Fifty Cent Dollars</td><td>win</td><td>$59.23</td><td>4.5</td><td class="mut">value +0.1843</td></tr><tr><td>3</td><td class="mut">Churchill Downs</td><td>R3</td><td>Runwithheart</td><td>win</td><td>$39.79</td><td>31.0</td><td class="mut">value +0.154</td></tr><tr><td>4</td><td class="mut">Churchill Downs</td><td>R4</td><td>Soho Jimmy</td><td>win</td><td>$17.14</td><td>31.0</td><td class="mut">value +0.0663</td></tr><tr><td>5</td><td class="mut">Churchill Downs</td><td>R5</td><td>Otto the Conqueror</td><td>win</td><td>$36.7</td><td>7.0</td><td class="mut">value +0.1258</td></tr><tr><td>6</td><td class="mut">Churchill Downs</td><td>R5</td><td>Scat Free</td><td>win</td><td>$17.19</td><td>21.0</td><td class="mut">value +0.0655</td></tr><tr><td>7</td><td class="mut">Churchill Downs</td><td>R5</td><td>Invulnerable</td><td>win</td><td>$11.09</td><td>16.0</td><td class="mut">value +0.0416</td></tr><tr><td>8</td><td class="mut">Churchill Downs</td><td>R6</td><td>Bourbon Rage</td><td>win</td><td>$19.34</td><td>4.5</td><td class="mut">value +0.0602</td></tr><tr><td>9</td><td class="mut">Churchill Downs</td><td>R7</td><td>Speedstorm</td><td>win</td><td>$20.9</td><td>13.0</td><td class="mut">value +0.0772</td></tr><tr><td>10</td><td class="mut">Churchill Downs</td><td>R7</td><td>Easy Dial</td><td>win</td><td>$13.24</td><td>31.0</td><td class="mut">value +0.0512</td></tr><tr><td>11</td><td class="mut">Churchill Downs</td><td>R7</td><td>Bebedouro</td><td>win</td><td>$12.54</td><td>11.0</td><td class="mut">value +0.0456</td></tr><tr><td>12</td><td class="mut">Churchill Downs</td><td>R8</td><td>Taunting</td><td>win</td><td>$31.86</td><td>21.0</td><td class="mut">value +0.1214</td></tr><tr><td>13</td><td class="mut">Churchill Downs</td><td>R8</td><td>Mary&#39;s Boy Bolt</td><td>win</td><td>$13.81</td><td>13.0</td><td class="mut">value +0.051</td></tr><tr><td>14</td><td class="mut">Belmont At Aqueduct</td><td>R1</td><td>Full of Tact</td><td>win</td><td>$33.24</td><td>11.0</td><td class="mut">value +0.1209</td></tr><tr><td>15</td><td class="mut">Belmont At Aqueduct</td><td>R3</td><td>People Watching</td><td>win</td><td>$15.38</td><td>7.0</td><td class="mut">value +0.0527</td></tr><tr><td>16</td><td class="mut">Belmont At Aqueduct</td><td>R4</td><td>Wildest Dreams</td><td>win</td><td>$15.71</td><td>4.5</td><td class="mut">value +0.0489</td></tr><tr><td>17</td><td class="mut">Woodbine</td><td>R1</td><td>Secret Load</td><td>win</td><td>$24.84</td><td>5.5</td><td class="mut">value +0.0813</td></tr><tr><td>18</td><td class="mut">Woodbine</td><td>R2</td><td>Divine Leader</td><td>win</td><td>$59.32</td><td>3.5</td><td class="mut">value +0.1695</td></tr><tr><td>19</td><td class="mut">Woodbine</td><td>R4</td><td>No Cape</td><td>win</td><td>$16.53</td><td>21.0</td><td class="mut">value +0.063</td></tr></table>
+
+<h2>🎟️ Open bets</h2><table><tr><th>#</th><th>Track</th><th>Race</th><th>Selection</th><th>Type</th><th>Stake</th><th>Odds</th><th>Note</th></tr>
+<tr><td class="mut">1</td><td class="mut">Churchill Downs</td><td>R1</td><td>Randie&#39;s Rascal (GB)</td>
+<td>win</td>
+<td>$38.13</td><td>5.5</td><td class="mut">value +0.1248</td></tr><tr><td class="mut">2</td><td class="mut">Churchill Downs</td><td>R2</td><td>Fifty Cent Dollars</td>
+<td>win</td>
+<td>$59.23</td><td>4.5</td><td class="mut">value +0.1843</td></tr><tr><td class="mut">3</td><td class="mut">Churchill Downs</td><td>R3</td><td>Runwithheart</td>
+<td>win</td>
+<td>$39.79</td><td>31.0</td><td class="mut">value +0.154</td></tr><tr><td class="mut">4</td><td class="mut">Churchill Downs</td><td>R4</td><td>Soho Jimmy</td>
+<td>win</td>
+<td>$17.14</td><td>31.0</td><td class="mut">value +0.0663</td></tr><tr><td class="mut">5</td><td class="mut">Churchill Downs</td><td>R5</td><td>Otto the Conqueror</td>
+<td>win</td>
+<td>$36.7</td><td>7.0</td><td class="mut">value +0.1258</td></tr><tr><td class="mut">6</td><td class="mut">Churchill Downs</td><td>R5</td><td>Scat Free</td>
+<td>win</td>
+<td>$17.19</td><td>21.0</td><td class="mut">value +0.0655</td></tr><tr><td class="mut">7</td><td class="mut">Churchill Downs</td><td>R5</td><td>Invulnerable</td>
+<td>win</td>
+<td>$11.09</td><td>16.0</td><td class="mut">value +0.0416</td></tr><tr><td class="mut">8</td><td class="mut">Churchill Downs</td><td>R6</td><td>Bourbon Rage</td>
+<td>win</td>
+<td>$19.34</td><td>4.5</td><td class="mut">value +0.0602</td></tr><tr><td class="mut">9</td><td class="mut">Churchill Downs</td><td>R7</td><td>Speedstorm</td>
+<td>win</td>
+<td>$20.9</td><td>13.0</td><td class="mut">value +0.0772</td></tr><tr><td class="mut">10</td><td class="mut">Churchill Downs</td><td>R7</td><td>Easy Dial</td>
+<td>win</td>
+<td>$13.24</td><td>31.0</td><td class="mut">value +0.0512</td></tr><tr><td class="mut">11</td><td class="mut">Churchill Downs</td><td>R7</td><td>Bebedouro</td>
+<td>win</td>
+<td>$12.54</td><td>11.0</td><td class="mut">value +0.0456</td></tr><tr><td class="mut">12</td><td class="mut">Churchill Downs</td><td>R8</td><td>Taunting</td>
+<td>win</td>
+<td>$31.86</td><td>21.0</td><td class="mut">value +0.1214</td></tr><tr><td class="mut">13</td><td class="mut">Churchill Downs</td><td>R8</td><td>Mary&#39;s Boy Bolt</td>
+<td>win</td>
+<td>$13.81</td><td>13.0</td><td class="mut">value +0.051</td></tr><tr><td class="mut">14</td><td class="mut">Belmont At Aqueduct</td><td>R1</td><td>Full of Tact</td>
+<td>win</td>
+<td>$33.24</td><td>11.0</td><td class="mut">value +0.1209</td></tr><tr><td class="mut">15</td><td class="mut">Belmont At Aqueduct</td><td>R3</td><td>People Watching</td>
+<td>win</td>
+<td>$15.38</td><td>7.0</td><td class="mut">value +0.0527</td></tr><tr><td class="mut">16</td><td class="mut">Belmont At Aqueduct</td><td>R4</td><td>Wildest Dreams</td>
+<td>win</td>
+<td>$15.71</td><td>4.5</td><td class="mut">value +0.0489</td></tr><tr><td class="mut">17</td><td class="mut">Woodbine</td><td>R1</td><td>Secret Load</td>
+<td>win</td>
+<td>$24.84</td><td>5.5</td><td class="mut">value +0.0813</td></tr><tr><td class="mut">18</td><td class="mut">Woodbine</td><td>R2</td><td>Divine Leader</td>
+<td>win</td>
+<td>$59.32</td><td>3.5</td><td class="mut">value +0.1695</td></tr><tr><td class="mut">19</td><td class="mut">Woodbine</td><td>R4</td><td>No Cape</td>
+<td>win</td>
+<td>$16.53</td><td>21.0</td><td class="mut">value +0.063</td></tr></table>
+
 <h2>🏇 Handicapped cards <span class="sub">19 races · 2026-06-18</span></h2>
 <table><tr><th>Race</th><th>Top pick</th><th>Conf.</th><th>Value play</th><th>Exotic</th><th>Mode</th></tr>
 
 
-<tr><td colspan="6" style="background:#1b2230;color:#f0a85b;font-weight:700;font-size:14px">🏇 Churchill Downs</td></tr>
+<tr><td colspan="6" class="trk">🏇 Churchill Downs</td></tr>
 <tr>
   <td><b>R1</b><br><span class="mut" style="font-size:11px">Moderate pace, favors tactical speed.</span></td>
-  <td><b>Randie&#39;s Rascal (GB)</b> <span class="mut">(9/2, 31%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
+  <td><b>Randie&#39;s Rascal (GB)</b> <span class="mut">(9/2, 31%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
   <td>high</td>
   <td><b class="pos">Randie&#39;s Rascal (GB)</b> (9/2, +0.1248, $38.13)</td>
   <td class="mut">box 22% $6.0</td>
@@ -73,7 +140,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R2</b><br><span class="mut" style="font-size:11px">Paceless race, favors speed.</span></td>
-  <td><b>Fifty Cent Dollars</b> <span class="mut">(7/2, 41%) · P</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
+  <td><b>Fifty Cent Dollars</b> <span class="mut">(7/2, 41%) · P</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
   <td>high</td>
   <td><b class="pos">Fifty Cent Dollars</b> (7/2, +0.1843, $59.23)</td>
   <td class="mut">box 44% $6.0</td>
@@ -100,7 +167,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R5</b><br><span class="mut" style="font-size:11px">Fast pace, favors closers.</span></td>
-  <td><b>Otto the Conqueror</b> <span class="mut">(6/1, 27%) · P</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
+  <td><b>Otto the Conqueror</b> <span class="mut">(6/1, 27%) · P</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, contender.</span></td>
   <td>medium</td>
   <td><b class="pos">Otto the Conqueror</b> (6/1, +0.1258, $36.7); <b class="pos">Scat Free</b> (20/1, +0.0655, $17.19); <b class="pos">Invulnerable</b> (15/1, +0.0416, $11.09)</td>
   <td class="mut">box 28% $6.0</td>
@@ -109,7 +176,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R6</b><br><span class="mut" style="font-size:11px">Moderate pace, fair to all.</span></td>
-  <td><b>Bourbon Rage</b> <span class="mut">(7/2, 28%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Solid last race, contender.</span></td>
+  <td><b>Bourbon Rage</b> <span class="mut">(7/2, 28%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Solid last race, contender.</span></td>
   <td>low</td>
   <td><b class="pos">Bourbon Rage</b> (7/2, +0.0602, $19.34)</td>
   <td class="mut">box 45% $6.0</td>
@@ -133,7 +200,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
   <td class="mut">box 23% $6.0</td>
   <td><span class="tag">full figures</span></td>
 </tr>
-<tr><td colspan="6" style="background:#1b2230;color:#f0a85b;font-weight:700;font-size:14px">🏇 Belmont At Aqueduct</td></tr>
+<tr><td colspan="6" class="trk">🏇 Belmont At Aqueduct</td></tr>
 <tr>
   <td><b>R1</b><br><span class="mut" style="font-size:11px">Moderate pace, favors stalkers and pressers.</span></td>
   <td><b>Long Term Market</b> <span class="mut">(6/5, 36%) · E</span><br><span class="mut" style="font-size:11px">Best last fig + lone speed.</span></td>
@@ -145,7 +212,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R2</b><br><span class="mut" style="font-size:11px">Fast early pace, favors closers.</span></td>
-  <td><b>Arctic Wolf</b> <span class="mut">(7/2, 26%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, strong contender.</span></td>
+  <td><b>Arctic Wolf</b> <span class="mut">(7/2, 26%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Best last fig, strong contender.</span></td>
   <td>medium</td>
   <td><span class="mut">PASS</span></td>
   <td class="mut">box 33% $6.0</td>
@@ -154,7 +221,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R3</b><br><span class="mut" style="font-size:11px">Moderate pace, favors pressers.</span></td>
-  <td><b>Hand Over Heart</b> <span class="mut">(3/1, 24%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Strong last race, contender.</span></td>
+  <td><b>Hand Over Heart</b> <span class="mut">(3/1, 24%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Strong last race, contender.</span></td>
   <td>low</td>
   <td><b class="pos">People Watching</b> (6/1, +0.0527, $15.38)</td>
   <td class="mut">box 40% $6.0</td>
@@ -169,7 +236,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
   <td class="mut">box 23% $6.0</td>
   <td><span class="tag">handicapper read</span></td>
 </tr>
-<tr><td colspan="6" style="background:#1b2230;color:#f0a85b;font-weight:700;font-size:14px">🏇 Woodbine</td></tr>
+<tr><td colspan="6" class="trk">🏇 Woodbine</td></tr>
 <tr>
   <td><b>R1</b><br><span class="mut" style="font-size:11px">Moderate pace likely, favors stalkers and pressers.</span></td>
   <td><b>Texas Holiday</b> <span class="mut">(9/5, 28%) · E</span><br><span class="mut" style="font-size:11px">Best last fig + lone speed.</span></td>
@@ -181,7 +248,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R2</b><br><span class="mut" style="font-size:11px">Fast pace expected, could set up for closers.</span></td>
-  <td><b>Divine Leader</b> <span class="mut">(5/2, 46%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Consistent speed, pressing trip.</span></td>
+  <td><b>Divine Leader</b> <span class="mut">(5/2, 46%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Consistent speed, pressing trip.</span></td>
   <td>high</td>
   <td><b class="pos">Divine Leader</b> (5/2, +0.1695, $59.32)</td>
   <td class="mut">box 51% $6.0</td>
@@ -190,7 +257,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R3</b><br><span class="mut" style="font-size:11px">Slow pace expected, favors early speed.</span></td>
-  <td><b>Speak Up</b> <span class="mut">(2/1, 45%) · EP</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Best speed, pressing trip.</span></td>
+  <td><b>Speak Up</b> <span class="mut">(2/1, 45%) · EP</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Best speed, pressing trip.</span></td>
   <td>high</td>
   <td><b class="pos">Speak Up</b> (2/1, +0.1167, $43.75)</td>
   <td class="mut">box 42% $6.0</td>
@@ -226,7 +293,7 @@ Maintain disciplined staking by adhering to the Kelly Criterion for bet sizing, 
 
 <tr>
   <td><b>R7</b><br><span class="mut" style="font-size:11px">Fast pace expected, favors closers.</span></td>
-  <td><b>Believe in Luck</b> <span class="mut">(4/1, 28%) · P</span> <span class="tag" style="background:#3a2d00;color:#f0b">beats fav</span><br><span class="mut" style="font-size:11px">Unknown, needs trip.</span></td>
+  <td><b>Believe in Luck</b> <span class="mut">(4/1, 28%) · P</span> <span class="tag" style="background:#3a2d00;color:var(--gold)">beats fav</span><br><span class="mut" style="font-size:11px">Unknown, needs trip.</span></td>
   <td>low</td>
   <td><b class="pos">Believe in Luck</b> (4/1, +0.0781, $24.41); <b class="pos">Ur Heart</b> (12/1, +0.0401, $10.85)</td>
   <td class="mut">box 39% $6.0</td>
